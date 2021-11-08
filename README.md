@@ -1,1 +1,1 @@
-# sfi-recipe-app
+# sfg-recipe-app
