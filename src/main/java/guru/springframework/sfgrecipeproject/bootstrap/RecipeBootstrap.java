@@ -4,14 +4,17 @@ import guru.springframework.sfgrecipeproject.domain.*;
 import guru.springframework.sfgrecipeproject.repositories.CategoryRepository;
 import guru.springframework.sfgrecipeproject.repositories.RecipeRepository;
 import guru.springframework.sfgrecipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -24,8 +27,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {
