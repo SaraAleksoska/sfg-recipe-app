@@ -1,6 +1,5 @@
 package guru.springframework.sfgrecipeproject.domain;
 
-import jdk.jfr.DataAmount;
 import lombok.*;
 
 import javax.persistence.*;

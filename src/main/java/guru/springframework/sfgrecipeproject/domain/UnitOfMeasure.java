@@ -25,7 +25,7 @@ public class UnitOfMeasure {
         return uom;
     }
 
-    public void setUom(String uom) {
+        public void setUom(String uom) {
         this.uom = uom;
     }
 }
